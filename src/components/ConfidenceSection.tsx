@@ -4,7 +4,7 @@ import { PRODUCT_INFO } from '../config';
 
 export const ConfidenceSection: React.FC = () => {
   return (
-    <section id="confianca" className="py-16 sm:py-24 bg-[#090b0e] border-b border-stone-800/80 relative">
+    <section id="confianca" className="py-16 sm:py-24 bg-[#090b0e] border-b border-stone-800/80 relative overflow-hidden w-full max-w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

@@ -29,12 +29,12 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#090b0e] text-slate-100 flex flex-col selection:bg-amber-400 selection:text-stone-950">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#090b0e] text-slate-100 flex flex-col selection:bg-amber-400 selection:text-stone-950">
       {/* Header */}
       <Navbar />
 
       {/* Main Content */}
-      <main className="flex-grow">
+      <main className="flex-grow w-full max-w-full overflow-x-hidden">
         <Hero />
         <Benefits />
         <HowItWorks />
@@ -51,7 +51,7 @@ export default function App() {
       {showFloatingBar && (
         <aside
           aria-label="Barra de compra rápida"
-          className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 z-40 max-w-md w-auto"
+          className="fixed bottom-4 inset-x-4 sm:inset-x-auto sm:right-6 z-40 max-w-md w-auto"
         >
           <div className="rounded-2xl bg-stone-900/95 border border-amber-500/40 p-3 sm:p-3.5 shadow-2xl shadow-black/90 backdrop-blur-md flex items-center justify-between gap-3 animate-in fade-in slide-in-from-bottom-4 duration-200">
             <div className="flex items-center gap-2.5">

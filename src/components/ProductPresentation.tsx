@@ -96,7 +96,7 @@ export const ProductPresentation: React.FC = () => {
   ];
 
   return (
-    <section id="materiais" className="py-16 sm:py-24 bg-[#0c0f14] border-b border-stone-800/80 relative">
+    <section id="materiais" className="py-16 sm:py-24 bg-[#0c0f14] border-b border-stone-800/80 relative overflow-hidden w-full max-w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -176,10 +176,10 @@ export const ProductPresentation: React.FC = () => {
             href={CAKTO_CHECKOUT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-stone-950 font-bold text-sm tracking-wide shadow-lg shadow-amber-500/20 active:scale-95 transition-all"
+            className="w-full md:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-stone-950 font-bold text-sm tracking-wide shadow-lg shadow-amber-500/20 active:scale-95 transition-all text-center"
           >
             <span>Quero Economizar na Obra</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 shrink-0" />
           </a>
         </div>
 

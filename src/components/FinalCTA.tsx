@@ -4,9 +4,9 @@ import { CAKTO_CHECKOUT_URL } from '../config';
 
 export const FinalCTA: React.FC = () => {
   return (
-    <section className="py-16 sm:py-24 bg-gradient-to-b from-[#0c0f14] via-[#12161f] to-[#090b0e] relative overflow-hidden border-b border-stone-800">
+    <section className="py-16 sm:py-24 bg-gradient-to-b from-[#0c0f14] via-[#12161f] to-[#090b0e] relative overflow-hidden border-b border-stone-800 w-full max-w-full">
       {/* Decorative ambient flare */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-r from-amber-500/15 via-orange-500/15 to-transparent blur-[140px] pointer-events-none -z-10 rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[600px] h-[350px] max-w-full bg-gradient-to-r from-amber-500/15 via-orange-500/15 to-transparent blur-[140px] pointer-events-none -z-10 rounded-full" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
@@ -38,16 +38,16 @@ export const FinalCTA: React.FC = () => {
         </div>
 
         {/* Main CTA Button */}
-        <div>
+        <div className="w-full max-w-md mx-auto">
           <a
             id="final-cta-button"
             href={CAKTO_CHECKOUT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 hover:from-amber-300 hover:to-amber-400 text-stone-950 font-black text-base sm:text-lg tracking-wide shadow-2xl shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+            className="w-full inline-flex items-center justify-center gap-3 px-5 sm:px-10 py-4 sm:py-5 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 hover:from-amber-300 hover:to-amber-400 text-stone-950 font-black text-sm sm:text-base lg:text-lg tracking-wide shadow-2xl shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-center"
           >
             <span>COMPRAR OBRA CALC — R$ 19,90</span>
-            <ArrowRight className="w-5 h-5 stroke-[2.5]" />
+            <ArrowRight className="w-5 h-5 stroke-[2.5] shrink-0" />
           </a>
         </div>
 

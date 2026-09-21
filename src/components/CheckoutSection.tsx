@@ -13,9 +13,9 @@ import { CAKTO_CHECKOUT_URL, PRODUCT_INFO } from '../config';
 
 export const CheckoutSection: React.FC = () => {
   return (
-    <section id="checkout" className="py-16 sm:py-24 bg-[#0c0f14] border-b border-stone-800/80 relative">
+    <section id="checkout" className="py-16 sm:py-24 bg-[#0c0f14] border-b border-stone-800/80 relative overflow-hidden w-full max-w-full">
       {/* Background glow behind the card */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/10 blur-[140px] pointer-events-none -z-10 rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] max-w-full bg-amber-500/10 blur-[140px] pointer-events-none -z-10 rounded-full" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         

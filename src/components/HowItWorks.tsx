@@ -34,7 +34,7 @@ export const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section id="como-funciona" className="py-16 sm:py-24 bg-[#090b0e] border-b border-stone-800/80 relative">
+    <section id="como-funciona" className="py-16 sm:py-24 bg-[#090b0e] border-b border-stone-800/80 relative overflow-hidden w-full max-w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -98,8 +98,8 @@ export const HowItWorks: React.FC = () => {
         </div>
 
         {/* Bottom banner for clarity */}
-        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-stone-900 via-[#161a22] to-stone-900 border border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-left">
+        <div className="mt-12 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-stone-900 via-[#161a22] to-stone-900 border border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-left w-full sm:w-auto">
             <h4 className="text-sm sm:text-base font-bold text-white">
               Pronto para parar de perder tempo com contas manuais?
             </h4>
@@ -111,10 +111,10 @@ export const HowItWorks: React.FC = () => {
             href={CAKTO_CHECKOUT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold text-sm shadow-md transition-colors"
+            className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold text-sm shadow-md transition-colors text-center"
           >
             <span>Quero o OBRA CALC agora</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 shrink-0" />
           </a>
         </div>
 

@@ -6,7 +6,7 @@ export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#090b0e]/90 backdrop-blur-md border-b border-stone-800/80">
+    <header className="sticky top-0 z-50 w-full max-w-full overflow-x-clip bg-[#090b0e]/90 backdrop-blur-md border-b border-stone-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand */}
         <a href="#" className="flex items-center gap-3 group focus:outline-none">

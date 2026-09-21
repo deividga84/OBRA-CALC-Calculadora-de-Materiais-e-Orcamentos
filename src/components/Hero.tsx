@@ -40,10 +40,10 @@ export const Hero: React.FC = () => {
   ).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   return (
-    <section className="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-24 border-b border-stone-800/80">
+    <section className="relative overflow-hidden w-full max-w-full pt-8 pb-16 lg:pt-14 lg:pb-24 border-b border-stone-800/80">
       {/* Background ambient lighting effects */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[800px] h-[350px] bg-amber-500/10 blur-[130px] pointer-events-none -z-10 rounded-full" />
-      <div className="absolute top-12 right-10 w-[300px] h-[300px] bg-orange-600/10 blur-[120px] pointer-events-none -z-10 rounded-full" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[600px] lg:w-[800px] h-[350px] max-w-full bg-amber-500/10 blur-[130px] pointer-events-none -z-10 rounded-full" />
+      <div className="absolute top-12 right-0 sm:right-10 w-[240px] sm:w-[300px] h-[240px] sm:h-[300px] max-w-full bg-orange-600/10 blur-[120px] pointer-events-none -z-10 rounded-full" />
 
       {/* Subtle grid pattern */}
       <div 
@@ -119,15 +119,15 @@ export const Hero: React.FC = () => {
                 href={CAKTO_CHECKOUT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 hover:from-amber-300 hover:to-amber-400 text-stone-950 font-black text-base sm:text-lg tracking-wide shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                className="inline-flex items-center justify-center gap-3 px-5 sm:px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 hover:from-amber-300 hover:to-amber-400 text-stone-950 font-black text-sm sm:text-base lg:text-lg tracking-wide shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-center"
               >
                 <span>COMPRAR AGORA — R$ 19,90</span>
-                <ArrowRight className="w-5 h-5 stroke-[2.5]" />
+                <ArrowRight className="w-5 h-5 stroke-[2.5] shrink-0" />
               </a>
 
               <a
                 href="#como-funciona"
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-stone-900/80 hover:bg-stone-800 text-stone-200 font-semibold text-sm border border-stone-800 hover:border-stone-700 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-stone-900/80 hover:bg-stone-800 text-stone-200 font-semibold text-sm border border-stone-800 hover:border-stone-700 transition-colors text-center"
               >
                 <span>Como funciona</span>
               </a>

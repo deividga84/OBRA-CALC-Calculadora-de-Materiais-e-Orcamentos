@@ -121,7 +121,7 @@ export const Benefits: React.FC = () => {
   ];
 
   return (
-    <section id="beneficios" className="py-16 sm:py-24 bg-[#0c0f14] border-b border-stone-800/80 relative">
+    <section id="beneficios" className="py-16 sm:py-24 bg-[#0c0f14] border-b border-stone-800/80 relative overflow-hidden w-full max-w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -179,15 +179,15 @@ export const Benefits: React.FC = () => {
         </div>
 
         {/* Quick CTA inside section */}
-        <div className="mt-12 text-center">
+        <div className="mt-12 text-center max-w-xl mx-auto w-full px-2">
           <a
             href={CAKTO_CHECKOUT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-amber-400 hover:text-amber-300 font-bold text-sm border border-amber-500/30 hover:border-amber-500/60 transition-all duration-200 shadow-md"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-amber-400 hover:text-amber-300 font-bold text-xs sm:text-sm border border-amber-500/30 hover:border-amber-500/60 transition-all duration-200 shadow-md text-center"
           >
             <span>Garantir o OBRA CALC com todos os módulos por R$ 19,90</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 shrink-0" />
           </a>
         </div>
 
