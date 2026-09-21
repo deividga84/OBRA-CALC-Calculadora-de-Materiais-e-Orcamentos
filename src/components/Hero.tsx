@@ -45,6 +45,13 @@ export const Hero: React.FC = () => {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[600px] lg:w-[800px] h-[350px] max-w-full bg-amber-500/10 blur-[130px] pointer-events-none -z-10 rounded-full" />
       <div className="absolute top-12 right-0 sm:right-10 w-[240px] sm:w-[300px] h-[240px] sm:h-[300px] max-w-full bg-orange-600/10 blur-[120px] pointer-events-none -z-10 rounded-full" />
 
+      {/* Subtle civil construction blueprint backdrop */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center pointer-events-none -z-20 opacity-[0.04] mix-blend-luminosity"
+        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80')` }}
+        aria-hidden="true"
+      />
+
       {/* Subtle grid pattern */}
       <div 
         className="absolute inset-0 bg-[linear-gradient(to_right,#1f242d18_1px,transparent_1px),linear-gradient(to_bottom,#1f242d18_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none -z-10"
@@ -71,9 +78,37 @@ export const Hero: React.FC = () => {
             </h1>
 
             {/* Short Explanatory Text */}
-            <p className="text-base sm:text-lg text-stone-300 max-w-2xl leading-relaxed mb-8 font-normal">
+            <p className="text-base sm:text-lg text-stone-300 max-w-2xl leading-relaxed mb-6 font-normal">
               O <strong className="text-white font-semibold">OBRA CALC</strong> foi desenvolvido para ajudar você a estimar materiais, quantidades exatas e custos de uma obra de maneira prática e confiável. Elimine compras no escuro, evite desperdícios no canteiro e tenha relatórios prontos em poucos minutos.
             </p>
+
+            {/* Real Construction Social Proof Strip */}
+            <div className="flex items-center gap-3 mb-6 p-2 pr-4 rounded-xl bg-stone-900/90 border border-stone-800 shadow-md">
+              <div className="flex -space-x-2 overflow-hidden shrink-0">
+                <img
+                  className="inline-block h-8 w-8 rounded-full ring-2 ring-stone-900 object-cover"
+                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=120&q=80"
+                  alt="Profissional da construção civil em canteiro"
+                  referrerPolicy="no-referrer"
+                />
+                <img
+                  className="inline-block h-8 w-8 rounded-full ring-2 ring-stone-900 object-cover"
+                  src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=120&q=80"
+                  alt="Assentamento de alvenaria"
+                  referrerPolicy="no-referrer"
+                />
+                <img
+                  className="inline-block h-8 w-8 rounded-full ring-2 ring-stone-900 object-cover"
+                  src="https://images.unsplash.com/photo-1535732820275-9ffd998cac22?auto=format&fit=crop&w=120&q=80"
+                  alt="Mestre de obras com capacete"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="text-xs">
+                <span className="text-white font-bold block leading-tight">+1.400 obras calculadas</span>
+                <span className="text-stone-400 text-[11px]">Por pedreiros, mestres e construtores</span>
+              </div>
+            </div>
 
             {/* Price Box Callout */}
             <div className="w-full sm:w-auto p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-stone-900/95 to-stone-900/80 border border-amber-500/30 mb-8 flex flex-col sm:flex-row sm:items-center gap-4 shadow-xl shadow-black/40">
@@ -172,6 +207,29 @@ export const Hero: React.FC = () => {
                 <div className="flex items-center gap-1.5 bg-stone-900 px-2.5 py-1 rounded-md border border-stone-800 text-[11px] font-mono text-amber-400">
                   <Percent className="w-3 h-3" />
                   <span>Perda: {wasteMargin}%</span>
+                </div>
+              </div>
+
+              {/* Construction Reference Mini-Card with Real Photo */}
+              <div className="relative h-16 w-full rounded-xl overflow-hidden mb-4 border border-stone-800 bg-stone-950 flex items-center">
+                <img
+                  src={
+                    materialType === 'tijolo_ceramico'
+                      ? 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=600&q=80'
+                      : 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
+                  }
+                  alt="Alvenaria e tijolos no canteiro"
+                  className="absolute inset-0 w-full h-full object-cover opacity-35"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#161a22] via-[#161a22]/80 to-transparent" />
+                <div className="relative z-10 px-3.5 py-1">
+                  <span className="text-amber-400 font-bold uppercase text-[10px] tracking-wider block">
+                    Referência no Canteiro
+                  </span>
+                  <p className="text-white font-medium text-xs">
+                    {materialType === 'tijolo_ceramico' ? 'Assentamento de Tijolo Cerâmico' : 'Alvenaria com Bloco de Concreto'}
+                  </p>
                 </div>
               </div>
 

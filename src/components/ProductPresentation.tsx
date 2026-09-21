@@ -20,6 +20,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 01',
       title: 'Alvenaria e Paredes',
       subtitle: 'Blocos, Tijolos e Argamassa',
+      image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=700&q=80',
       description:
         'Calcule a quantidade exata de blocos de concreto ou tijolos cerâmicos necessários para qualquer parede, descontando portas e janelas automaticamente.',
       features: [
@@ -33,6 +34,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 02',
       title: 'Concreto e Estrutural',
       subtitle: 'Sapatas, Vigas, Pilares e Lajes',
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80',
       description:
         'Obtenha os volumes exatos de concreto e a dosagem de cimento, areia média e brita 1 de acordo com o traço padrão da construção civil.',
       features: [
@@ -46,6 +48,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 03',
       title: 'Pisos e Revestimentos',
       subtitle: 'Cerâmicas, Porcelanatos e Rejunte',
+      image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=700&q=80',
       description:
         'Planeje a compra de pisos e azulejos com precisão milimétrica, considerando a margem para recortes diagonais ou alinhados.',
       features: [
@@ -59,6 +62,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 04',
       title: 'Pintura e Acabamento',
       subtitle: 'Tintas, Seladores e Massa Corrida',
+      image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=700&q=80',
       description:
         'Saiba exatamente quantas latas (18L) e galões (3,6L) de tinta comprar, baseando-se na área líquida e no número de demãos recomendado.',
       features: [
@@ -72,6 +76,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 05',
       title: 'Controle de Margem de Perda',
       subtitle: 'Segurança contra desperdício',
+      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80',
       description:
         'Ajuste facilmente de 5% a 15% de margem técnica para compensar quebras no descarregamento, sobras e cortes inevitáveis no canteiro.',
       features: [
@@ -85,6 +90,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 06',
       title: 'Resumo para Orçamentos e Compras',
       subtitle: 'Organização profissional imediata',
+      image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=700&q=80',
       description:
         'Todas as quantidades reunidas em uma visualização limpa e profissional, pronta para você levar ao depósito de materiais ou repassar ao cliente.',
       features: [
@@ -119,37 +125,52 @@ export const ProductPresentation: React.FC = () => {
             return (
               <div
                 key={index}
-                className="rounded-2xl bg-gradient-to-b from-[#141822] to-[#0e1118] p-6 border border-stone-800 hover:border-amber-400/40 transition-all duration-200 flex flex-col justify-between group shadow-lg shadow-black/40"
+                className="rounded-2xl bg-gradient-to-b from-[#141822] to-[#0e1118] border border-stone-800 hover:border-amber-400/40 transition-all duration-200 flex flex-col justify-between group shadow-lg shadow-black/40 overflow-hidden"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-stone-900 border border-stone-700/60 flex items-center justify-center text-amber-400 group-hover:scale-105 transition-transform">
-                      <IconComponent className="w-6 h-6 stroke-[2]" />
+                  {/* Real Civil Construction Photo Header */}
+                  <div className="relative h-44 w-full overflow-hidden bg-stone-950">
+                    <img
+                      src={mod.image}
+                      alt={mod.title}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#141822] via-[#141822]/40 to-black/30" />
+
+                    <div className="absolute top-3 left-3 w-10 h-10 rounded-xl bg-stone-900/90 backdrop-blur-md border border-amber-400/30 flex items-center justify-center text-amber-400 shadow-md">
+                      <IconComponent className="w-5 h-5 stroke-[2]" />
                     </div>
-                    <span className="text-[11px] font-mono font-bold text-amber-400/90 bg-amber-400/10 px-2.5 py-1 rounded border border-amber-400/20">
+
+                    <span className="absolute top-3 right-3 text-[11px] font-mono font-bold text-amber-400/95 bg-stone-950/85 backdrop-blur-md px-2.5 py-1 rounded border border-amber-400/30">
                       {mod.tag}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-1 group-hover:text-amber-300 transition-colors">
-                    {mod.title}
-                  </h3>
-                  <span className="text-xs text-amber-400/80 font-medium block mb-3">
-                    {mod.subtitle}
-                  </span>
+                  <div className="p-6 pt-3">
+                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-amber-300 transition-colors">
+                      {mod.title}
+                    </h3>
+                    <span className="text-xs text-amber-400/80 font-medium block mb-3">
+                      {mod.subtitle}
+                    </span>
 
-                  <p className="text-xs text-stone-400 leading-relaxed mb-5">
-                    {mod.description}
-                  </p>
+                    <p className="text-xs text-stone-400 leading-relaxed mb-5">
+                      {mod.description}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="pt-4 border-t border-stone-800/80 space-y-2">
-                  {mod.features.map((feat, fIdx) => (
-                    <div key={fIdx} className="flex items-start gap-2 text-xs text-stone-300">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
-                      <span>{feat}</span>
-                    </div>
-                  ))}
+                <div className="p-6 pt-0">
+                  <div className="pt-4 border-t border-stone-800/80 space-y-2">
+                    {mod.features.map((feat, fIdx) => (
+                      <div key={fIdx} className="flex items-start gap-2 text-xs text-stone-300">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             );
