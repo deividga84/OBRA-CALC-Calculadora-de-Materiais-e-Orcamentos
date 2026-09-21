@@ -1,0 +1,6 @@
+{
+  "name": "OBRA CALC",
+  "description": "Calculadora de Materiais e Orçamentos para Construção Civil. Calcule materiais, quantidades e custos de forma rápida e organizada.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
