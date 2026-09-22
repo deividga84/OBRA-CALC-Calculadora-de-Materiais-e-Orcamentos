@@ -20,7 +20,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 01',
       title: 'Alvenaria e Paredes',
       subtitle: 'Blocos, Tijolos e Argamassa',
-      image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=700&q=80',
+      image: '/images/obra/pedreiro_tijolo.jpg',
       description:
         'Calcule a quantidade exata de blocos de concreto ou tijolos cerâmicos necessários para qualquer parede, descontando portas e janelas automaticamente.',
       features: [
@@ -34,7 +34,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 02',
       title: 'Concreto e Estrutural',
       subtitle: 'Sapatas, Vigas, Pilares e Lajes',
-      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80',
+      image: '/images/obra/fundacao_concreto.jpg',
       description:
         'Obtenha os volumes exatos de concreto e a dosagem de cimento, areia média e brita 1 de acordo com o traço padrão da construção civil.',
       features: [
@@ -48,7 +48,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 03',
       title: 'Pisos e Revestimentos',
       subtitle: 'Cerâmicas, Porcelanatos e Rejunte',
-      image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=700&q=80',
+      image: '/images/obra/azulejista_piso.jpg',
       description:
         'Planeje a compra de pisos e azulejos com precisão milimétrica, considerando a margem para recortes diagonais ou alinhados.',
       features: [
@@ -62,7 +62,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 04',
       title: 'Pintura e Acabamento',
       subtitle: 'Tintas, Seladores e Massa Corrida',
-      image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=700&q=80',
+      image: '/images/obra/pintor_acabamento.jpg',
       description:
         'Saiba exatamente quantas latas (18L) e galões (3,6L) de tinta comprar, baseando-se na área líquida e no número de demãos recomendado.',
       features: [
@@ -75,8 +75,8 @@ export const ProductPresentation: React.FC = () => {
       icon: Sliders,
       tag: 'Módulo 05',
       title: 'Controle de Margem de Perda',
-      subtitle: 'Segurança contra desperdício',
-      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80',
+      subtitle: 'Segurança contra desperdício no canteiro',
+      image: '/images/obra/betoneira_areia.jpg',
       description:
         'Ajuste facilmente de 5% a 15% de margem técnica para compensar quebras no descarregamento, sobras e cortes inevitáveis no canteiro.',
       features: [
@@ -89,8 +89,8 @@ export const ProductPresentation: React.FC = () => {
       icon: FileText,
       tag: 'Módulo 06',
       title: 'Resumo para Orçamentos e Compras',
-      subtitle: 'Organização profissional imediata',
-      image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=700&q=80',
+      subtitle: 'Organização profissional com mestre de obras',
+      image: '/images/obra/mestre_canteiro.jpg',
       description:
         'Todas as quantidades reunidas em uma visualização limpa e profissional, pronta para você levar ao depósito de materiais ou repassar ao cliente.',
       features: [

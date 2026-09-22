@@ -48,7 +48,7 @@ export const Hero: React.FC = () => {
       {/* Subtle civil construction blueprint backdrop */}
       <div 
         className="absolute inset-0 bg-cover bg-center pointer-events-none -z-20 opacity-[0.04] mix-blend-luminosity"
-        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80')` }}
+        style={{ backgroundImage: `url('/images/obra/casa_estrutura.jpg')` }}
         aria-hidden="true"
       />
 
@@ -87,21 +87,18 @@ export const Hero: React.FC = () => {
               <div className="flex -space-x-2 overflow-hidden shrink-0">
                 <img
                   className="inline-block h-8 w-8 rounded-full ring-2 ring-stone-900 object-cover"
-                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=120&q=80"
-                  alt="Profissional da construção civil em canteiro"
-                  referrerPolicy="no-referrer"
+                  src="/images/obra/mestre_canteiro.jpg"
+                  alt="Mestre de obras com prancheta no canteiro"
                 />
                 <img
                   className="inline-block h-8 w-8 rounded-full ring-2 ring-stone-900 object-cover"
-                  src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=120&q=80"
-                  alt="Assentamento de alvenaria"
-                  referrerPolicy="no-referrer"
+                  src="/images/obra/pedreiro_tijolo.jpg"
+                  alt="Pedreiro assentando tijolos"
                 />
                 <img
                   className="inline-block h-8 w-8 rounded-full ring-2 ring-stone-900 object-cover"
-                  src="https://images.unsplash.com/photo-1535732820275-9ffd998cac22?auto=format&fit=crop&w=120&q=80"
-                  alt="Mestre de obras com capacete"
-                  referrerPolicy="no-referrer"
+                  src="/images/obra/fundacao_concreto.jpg"
+                  alt="Operários em concretagem e ferragens"
                 />
               </div>
               <div className="text-xs">
@@ -215,12 +212,11 @@ export const Hero: React.FC = () => {
                 <img
                   src={
                     materialType === 'tijolo_ceramico'
-                      ? 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=600&q=80'
-                      : 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
+                      ? '/images/obra/pedreiro_tijolo.jpg'
+                      : '/images/obra/parede_alinhada.jpg'
                   }
                   alt="Alvenaria e tijolos no canteiro"
                   className="absolute inset-0 w-full h-full object-cover opacity-35"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#161a22] via-[#161a22]/80 to-transparent" />
                 <div className="relative z-10 px-3.5 py-1">

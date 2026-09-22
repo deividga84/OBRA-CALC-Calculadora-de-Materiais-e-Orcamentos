@@ -8,8 +8,8 @@ export const HowItWorks: React.FC = () => {
       number: '01',
       icon: Ruler,
       title: 'Informe as medidas da obra',
-      subtitle: 'Simples e direto',
-      image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=600&q=80',
+      subtitle: 'Simples e direto no canteiro',
+      image: '/images/obra/mestre_canteiro.jpg',
       description:
         'Digite o comprimento, altura, largura ou área em m² da parede, piso, laje ou viga que você irá executar. Você não precisa saber fórmulas complexas.',
       details: ['Comprimento e altura de paredes', 'Área de pisos e lajes em m²', 'Vãos de portas e janelas com desconto automático']
@@ -18,8 +18,8 @@ export const HowItWorks: React.FC = () => {
       number: '02',
       icon: Sliders,
       title: 'Configure os materiais e parâmetros',
-      subtitle: 'Personalização total',
-      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
+      subtitle: 'Personalização do traço e insumos',
+      image: '/images/obra/betoneira_areia.jpg',
       description:
         'Escolha o tipo de bloco, tijolo, traço de concreto ou tipo de revestimento. Defina a margem de perda (ex: 10%) para proteger sua obra contra quebras.',
       details: ['Tipos de blocos ou cerâmicas', 'Traço de argamassa e concreto', 'Margem de perda ajustável']
@@ -28,8 +28,8 @@ export const HowItWorks: React.FC = () => {
       number: '03',
       icon: CheckSquare,
       title: 'Confira as quantidades e estimativas',
-      subtitle: 'Resultado pronto para usar',
-      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80',
+      subtitle: 'Obra pronta sem falta de material',
+      image: '/images/obra/casa_estrutura.jpg',
       description:
         'O OBRA CALC gera instantaneamente a lista completa: sacos de cimento, metros de areia e brita, unidades de tijolos e custo estimado total.',
       details: ['Lista de compras para o depósito', 'Estimativa de custo total', 'Redução drástica de desperdício']

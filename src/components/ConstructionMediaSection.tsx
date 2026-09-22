@@ -7,7 +7,9 @@ import {
   ArrowRight,
   CheckCircle2,
   Clock,
-  Eye
+  AlertTriangle,
+  Hammer,
+  ShieldCheck
 } from 'lucide-react';
 import { CAKTO_CHECKOUT_URL } from '../config';
 
@@ -15,88 +17,126 @@ export const ConstructionMediaSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'todas' | 'estrutura' | 'alvenaria' | 'acabamento'>('todas');
   const [featuredIndex, setFeaturedIndex] = useState<number>(0);
 
-  // Strategic high-resolution civil construction photo gallery
+  // 5 Etapas Cronológicas com Fotos REAIS de Obra Civil, Pedreiros e Mestres no Canteiro
+  const featuredShots = [
+    {
+      stepNumber: '1',
+      stepLabel: '1. Medição & Canteiro',
+      title: 'Mestre de Obras e Engenheiro com Prancheta no Canteiro',
+      subtitle: 'Conferência de medidas reais na obra de tijolos e colunas antes da compra',
+      image: '/images/obra/mestre_canteiro.jpg',
+      badge: 'ETAPA 1 • LEVANTAMENTO NO CANTEIRO',
+      painAvoided: 'Começar a comprar material no "chute" ou de cabeça, errando a conta e tomando prejuízo no bolso logo na primeira semana.',
+      solutionText: 'O mestre de obras insere as dimensões reais (comprimento x altura) no celular direto no canteiro. O OBRA CALC desconta automaticamente vãos de portas e janelas e entrega a área líquida exata calculada.',
+      materialsIncluded: 'Metragem quadrada (m²), perímetro linear e margens técnicas de segurança contra perdas.'
+    },
+    {
+      stepNumber: '2',
+      stepLabel: '2. Fundações & Estrutura',
+      title: 'Concretagem e Ferragem Armada em Fundação',
+      subtitle: 'Operários concretando vigas baldrames e sapatas com armaduras de aço CA-50',
+      image: '/images/obra/fundacao_concreto.jpg',
+      badge: 'ETAPA 2 • ESTRUTURAS & CONCRETAGEM',
+      painAvoided: 'Faltar agregados no meio da concretagem de uma viga ou sobrar concreto caro endurecendo no chão.',
+      solutionText: 'Cálculo exato de volume (m³) com traço calibrado para concreto estrutural (20 a 30 MPa). O app detalha a quantidade exata de sacos de cimento, latas de areia média e latas de pedra brita.',
+      materialsIncluded: 'Volume cúbico (m³), sacos de cimento CP-II/IV, latas/carrinhos de areia e brita 1.'
+    },
+    {
+      stepNumber: '3',
+      stepLabel: '3. Alvenaria em Ação',
+      title: 'Pedreiro Assentando Tijolo Cerâmico com Colher e Argamassa',
+      subtitle: 'Elevação técnica de parede com linha de náilon e colher de aço',
+      image: '/images/obra/pedreiro_tijolo.jpg',
+      badge: 'ETAPA 3 • ALVENARIA & PEDREIRO NA PRÁTICA',
+      painAvoided: 'Comprar caminhão fechado de tijolos que quebram à toa e ficar sem argamassa no meio do expediente.',
+      solutionText: 'Indica a quantidade exata de blocos cerâmicos ou de concreto por m² com 5% de quebra calculada, mais o traço de assentamento com sacos de cimento, cal hidratada e areia.',
+      materialsIncluded: 'Milheiros/unidades de blocos, sacos de cimento, cal para liga e volume de areia média.'
+    },
+    {
+      stepNumber: '4',
+      stepLabel: '4. Pisos & Revestimento',
+      title: 'Azulejista Assentando Porcelanato com Desempenadeira Dentada',
+      subtitle: 'Espalhamento uniforme de argamassa colante AC e niveladores de piso',
+      image: '/images/obra/azulejista_piso.jpg',
+      badge: 'ETAPA 4 • AZULEJISTA & REVESTIMENTOS',
+      painAvoided: 'Faltar 2 ou 3 caixas de piso para terminar o cômodo e não encontrar mais o mesmo lote ou tonalidade no depósito.',
+      solutionText: 'Calcula a metragem real do piso e indica o número fechado de caixas já com margem de segurança de 10% para quebras e rodapés, mais os sacos de argamassa AC-I/II/III e quilos de rejunte.',
+      materialsIncluded: 'Caixas de piso/porcelanato, sacos de argamassa colante AC e pacotes de rejunte antimofo.'
+    },
+    {
+      stepNumber: '5',
+      stepLabel: '5. Pintura & Acabamento',
+      title: 'Pintor Profissional Aplicando Tinta com Rolo na Obra',
+      subtitle: 'Aplicação com extensor e rolo em parede emassada e lixada',
+      image: '/images/obra/pintor_acabamento.jpg',
+      badge: 'ETAPA 5 • PINTURA PROFISSIONAL',
+      painAvoided: 'Comprar latas grandes de 18L caras que sobram pela metade e secam guardadas sem uso.',
+      solutionText: 'O app calcula o rendimento por demão e combina latas de 18L e galões de 3,6L da melhor forma para você pagar o menor valor possível no balcão da loja de tintas.',
+      materialsIncluded: 'Latas de 18L, galões de 3,6L de tinta acrílica/látex, selador acrílico e massa corrida.'
+    }
+  ];
+
+  // 6 Fotos Reais Adicionais Exclusivas de Obra Civil (Zero Repetições)
   const galleryItems = [
     {
-      id: 'foto-1',
+      id: 'foto-est-1',
       category: 'estrutura',
-      title: 'Estruturas & Fundações',
-      subtitle: 'Concretagem, sapatas e armaduras de aço',
-      desc: 'Cálculo milimétrico de volume de concreto (m³), dosagem precisa de cimento, areia e brita 1 para evitar desperdício de caminhão betoneira.',
-      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
-      tag: 'Concreto & Ferragem'
+      title: 'Amarração de Ferragens & Estribos de Aço CA-50',
+      subtitle: 'Armador com torquês e arame recozido preparando vigas',
+      desc: 'Montagem de estribos e vergalhões para garantir a resistência estrutural das colunas e vigas da casa sem trincas.',
+      image: '/images/obra/ferragem_armada.jpg',
+      tag: 'Aço & Ferragens'
     },
     {
-      id: 'foto-2',
+      id: 'foto-alv-1',
       category: 'alvenaria',
-      title: 'Alvenaria Estrutural & Vedação',
-      subtitle: 'Levantamento de blocos e tijolos com argamassa',
-      desc: 'Quantidade exata de blocos cerâmicos ou concreto por metro quadrado de parede, descontando vãos de portas e janelas automaticamente.',
-      image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=800&q=80',
-      tag: 'Tijolos & Blocos'
+      title: 'Alvenaria com Linha e Nível de Pedreiro',
+      subtitle: 'Paredes retas com controle de massa e espessura de junta',
+      desc: 'Controle de prumo e espessura de argamassa no assentamento de tijolos cerâmicos, garantindo paredes aprumadas.',
+      image: '/images/obra/parede_alinhada.jpg',
+      tag: 'Alvenaria na Prática'
     },
     {
-      id: 'foto-3',
+      id: 'foto-acab-1',
       category: 'acabamento',
-      title: 'Pisos & Revestimentos Cerâmicos',
-      subtitle: 'Porcelanatos, recortes e argamassa colante',
-      desc: 'Planejamento de caixas de piso, quilos de rejunte e sacos de argamassa AC-I/II/III considerando margem de segurança para quebras.',
-      image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80',
-      tag: 'Porcelanatos & Rejunte'
+      title: 'Pedreiro Sarrafeando Reboco com Régua de Alumínio',
+      subtitle: 'Argamassa e emboço regularizado na parede de tijolo',
+      desc: 'Aplicação e sarrafeamento de argamassa com régua metálica, eliminando ondulações antes do acabamento fino.',
+      image: '/images/obra/reboco_sarrafeado.jpg',
+      tag: 'Reboco & Emboço'
     },
     {
-      id: 'foto-4',
-      category: 'acabamento',
-      title: 'Pintura & Acabamento Técnico',
-      subtitle: 'Tintas, seladores e massa corrida',
-      desc: 'Cálculo de latas de 18L e galões de 3,6L baseado no número de demãos e rendimento real da superfície para fechar o orçamento sem sobras caras.',
-      image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80',
-      tag: 'Pintura & Demãos'
-    },
-    {
-      id: 'foto-5',
+      id: 'foto-est-2',
       category: 'estrutura',
-      title: 'Canteiro & Logística de Materiais',
-      subtitle: 'Armazenamento organizado e controle de estoque',
-      desc: 'Acompanhamento do recebimento de cargas de areia, brita e paletes de blocos para evitar paradas na frente de trabalho.',
-      image: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=800&q=80',
-      tag: 'Canteiro & Máquinas'
+      title: 'Estrutura Completa de Casa com Laje Concretada',
+      subtitle: 'Paredes de tijolo baiano, vigas e laje pré-moldada escorada',
+      desc: 'Visão real de residência em construção com alvenaria estrutural, escoras de madeira e concreto de laje sob o sol.',
+      image: '/images/obra/casa_estrutura.jpg',
+      tag: 'Casa em Construção'
     },
     {
-      id: 'foto-6',
+      id: 'foto-alv-2',
       category: 'alvenaria',
-      title: 'Conferência de Metragens & Projeto',
-      subtitle: 'Levantamento no local e validação de medidas',
-      desc: 'O profissional insere as medidas reais da obra no OBRA CALC diretamente pelo celular e obtém a lista de compras pronta em minutos.',
-      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80',
-      tag: 'Medição & Orçamento'
+      title: 'Canteiro Ativo: Betoneira, Areia, Brita e Cimento',
+      subtitle: 'Preparo diário de traço de concreto e argamassa no canteiro',
+      desc: 'Betoneira girando no canteiro com montes de areia média, brita 1 e sacos de cimento empilhados prontos para uso.',
+      image: '/images/obra/betoneira_areia.jpg',
+      tag: 'Canteiro de Obras'
+    },
+    {
+      id: 'foto-acab-2',
+      category: 'acabamento',
+      title: 'Conferência de Prumo de Face e Nível de Bolha',
+      subtitle: 'Pedreiro conferindo alinhamento e esquadro com fio de prumo',
+      desc: 'Checagem rigorosa de alinhamento vertical com fio de prumo metálico e nível para garantir portas e janelas sem dente.',
+      image: '/images/obra/prumo_esquadro.jpg',
+      tag: 'Nível & Esquadro'
     }
   ];
 
   const filteredItems = activeTab === 'todas'
     ? galleryItems
     : galleryItems.filter(item => item.category === activeTab);
-
-  const featuredShots = [
-    {
-      title: 'Canteiro Ativo: Concretagem de Vigas e Lajes',
-      subtitle: 'Execução de estrutura com dosagem rigorosa de cimento e agregados',
-      image: 'https://images.unsplash.com/photo-1541888946425-d0fbb180c5f7?auto=format&fit=crop&w=1200&q=80',
-      badge: 'ESTRUTURAL • CONCRETO ARMADO'
-    },
-    {
-      title: 'Alvenaria com Prumo e Argamassa no Traço Exato',
-      subtitle: 'Elevação contínua sem desperdício de sacos de cimento e areia',
-      image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80',
-      badge: 'ALVENARIA • BLOCOS & ARGAMASSA'
-    },
-    {
-      title: 'Assentamento de Pisos e Acabamento com Recorte Preciso',
-      subtitle: 'Controle de metragem quadrada e caixas com margem de quebra',
-      image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=1200&q=80',
-      badge: 'ACABAMENTO • PORCELANATOS'
-    }
-  ];
 
   const currentFeatured = featuredShots[featuredIndex];
 
@@ -108,21 +148,47 @@ export const ConstructionMediaSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">
             <Building2 className="w-4 h-4" />
-            <span>Na Prática no Canteiro de Obras</span>
+            <span>Obras Reais da Construção Civil na Prática</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-            Imagens Reais: <span className="text-amber-400">Da Fundação ao Acabamento</span>
+            Veja Profissionais em Ação: <span className="text-amber-400">Da Fundação ao Acabamento</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-stone-300">
-            Veja como o <strong>OBRA CALC</strong> se aplica na rotina prática da construção civil, trazendo precisão exata para cada etapa do seu canteiro.
+            Veja imagens reais de profissionais da construção civil e como o <strong>OBRA CALC</strong> resolve os problemas diários no canteiro, evitando desperdício de dinheiro e materiais.
           </p>
         </div>
 
+        {/* Stage Timeline Navigation Bar */}
+        <div className="mb-6 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none justify-start lg:justify-center">
+          {featuredShots.map((shot, idx) => {
+            const isActive = featuredIndex === idx;
+            return (
+              <button
+                key={shot.stepNumber}
+                type="button"
+                onClick={() => setFeaturedIndex(idx)}
+                className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 border ${
+                  isActive
+                    ? 'bg-amber-400 text-stone-950 border-amber-400 shadow-lg shadow-amber-400/20 scale-[1.02]'
+                    : 'bg-stone-900/90 text-stone-400 border-stone-800 hover:text-white hover:bg-stone-800 hover:border-stone-700'
+                }`}
+              >
+                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-black ${
+                  isActive ? 'bg-stone-950 text-amber-400' : 'bg-stone-800 text-stone-300'
+                }`}>
+                  {shot.stepNumber}
+                </span>
+                <span>{shot.stepLabel}</span>
+              </button>
+            );
+          })}
+        </div>
+
         {/* Featured Visual Spotlight Card */}
-        <div className="mb-16 rounded-2xl bg-stone-900/90 border border-stone-800 p-4 sm:p-6 lg:p-8 shadow-2xl shadow-black/80">
+        <div className="mb-16 rounded-2xl bg-stone-900/95 border border-stone-800 p-4 sm:p-6 lg:p-8 shadow-2xl shadow-black/80">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
             
             {/* Spotlight Image (7 cols) */}
@@ -132,10 +198,9 @@ export const ConstructionMediaSection: React.FC = () => {
                   src={currentFeatured.image}
                   alt={currentFeatured.title}
                   loading="eager"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover transition-all duration-700 ease-out"
+                  className="w-full h-full object-cover transition-all duration-500 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
                 {/* Status Banner on Top Left */}
                 <div className="absolute top-3 left-3 z-10 flex items-center gap-2 px-3 py-1 rounded-full bg-stone-950/85 backdrop-blur-md border border-amber-500/30 text-[11px] font-semibold text-amber-300 shadow-md">
@@ -144,34 +209,13 @@ export const ConstructionMediaSection: React.FC = () => {
                 </div>
 
                 {/* Bottom Caption Overlay */}
-                <div className="absolute bottom-3 inset-x-3 z-10 p-3 rounded-lg bg-stone-950/85 backdrop-blur-md border border-stone-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-white leading-tight">
-                      {currentFeatured.title}
-                    </h4>
-                    <p className="text-[11px] text-stone-400 hidden sm:block mt-0.5">
-                      {currentFeatured.subtitle}
-                    </p>
-                  </div>
-
-                  {/* Quick Selectors */}
-                  <div className="flex items-center gap-1.5 shrink-0">
-                    {featuredShots.map((_, sIdx) => (
-                      <button
-                        key={sIdx}
-                        type="button"
-                        onClick={() => setFeaturedIndex(sIdx)}
-                        aria-label={`Ver foto ${sIdx + 1}`}
-                        className={`px-2.5 py-1 rounded text-[10px] font-bold transition-all ${
-                          featuredIndex === sIdx
-                            ? 'bg-amber-400 text-stone-950'
-                            : 'bg-stone-800/90 text-stone-400 hover:bg-stone-700 hover:text-white'
-                        }`}
-                      >
-                        Etapa {sIdx + 1}
-                      </button>
-                    ))}
-                  </div>
+                <div className="absolute bottom-3 inset-x-3 z-10 p-3 rounded-lg bg-stone-950/90 backdrop-blur-md border border-stone-800/80">
+                  <h4 className="text-xs sm:text-sm font-bold text-white leading-tight">
+                    {currentFeatured.title}
+                  </h4>
+                  <p className="text-[11px] text-amber-300/90 mt-0.5">
+                    {currentFeatured.subtitle}
+                  </p>
                 </div>
               </div>
             </div>
@@ -179,45 +223,48 @@ export const ConstructionMediaSection: React.FC = () => {
             {/* Explanatory Context for Spotlight (5 cols) */}
             <div className="lg:col-span-5 flex flex-col justify-between">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-stone-800/80 border border-stone-700/60 text-stone-300 text-xs font-semibold mb-4">
-                  <HardHat className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Rotina Real da Construção</span>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-semibold mb-3">
+                  <HardHat className="w-3.5 h-3.5" />
+                  <span>Profissional na Etapa {currentFeatured.stepNumber} de 5</span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 leading-snug">
-                  Cada etapa exige cálculo certo para <span className="text-amber-400">não travar a obra</span>
+                <h3 className="text-xl sm:text-2xl font-black text-white mb-2 leading-snug">
+                  {currentFeatured.title}
                 </h3>
 
-                <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mb-6 font-normal">
-                  No canteiro de obras real, errar nas quantidades de blocos, cimento ou areia significa caminhão parado, equipe ociosa e compras de emergência com preços abusivos no depósito mais próximo.
+                <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mb-4 font-normal">
+                  {currentFeatured.solutionText}
                 </p>
 
+                {/* Marketing Pain Avoided vs Calculated Material */}
                 <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3 p-3 rounded-xl bg-stone-950/60 border border-stone-800/80">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <div className="text-xs">
-                      <strong className="text-white block font-semibold">Evite compras no escuro</strong>
-                      <span className="text-stone-400">Saiba o total exato de insumos antes de fechar o pedido no depósito.</span>
+                  {/* Pain Avoided */}
+                  <div className="flex items-start gap-2.5 p-3 rounded-xl bg-red-950/20 border border-red-800/40 text-xs">
+                    <AlertTriangle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-red-300 block font-bold mb-0.5">Problema comum evitado na obra:</strong>
+                      <span className="text-stone-300">{currentFeatured.painAvoided}</span>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 p-3 rounded-xl bg-stone-950/60 border border-stone-800/80">
-                    <Clock className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                    <div className="text-xs">
-                      <strong className="text-white block font-semibold">Cálculo em menos de 3 minutos</strong>
-                      <span className="text-stone-400">Basta inserir largura e altura no seu celular para ter os totais prontos.</span>
+                  {/* Materials Delivered */}
+                  <div className="flex items-start gap-2.5 p-3 rounded-xl bg-stone-950/70 border border-stone-800 text-xs">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-emerald-400 block font-bold mb-0.5">O que o OBRA CALC entrega pronto:</strong>
+                      <span className="text-stone-300">{currentFeatured.materialsIncluded}</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Call to action anchor */}
+              {/* Fast Action */}
               <div className="pt-2">
                 <a
                   href={CAKTO_CHECKOUT_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold text-xs tracking-wide shadow-md transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold text-xs tracking-wide shadow-md transition-colors"
                 >
                   <span>CALCULAR MINHA OBRA SEM ERROS — R$ 19,90</span>
                   <ArrowRight className="w-4 h-4" />
@@ -233,10 +280,10 @@ export const ConstructionMediaSection: React.FC = () => {
           <div>
             <h3 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
               <Layers className="w-5 h-5 text-amber-400" />
-              <span>Etapas da Obra com o OBRA CALC</span>
+              <span>Fotos Reais de Profissionais da Construção Civil</span>
             </h3>
             <p className="text-xs text-stone-400 mt-1">
-              Imagens reais das principais frentes de trabalho calculadas pelo aplicativo.
+              Imagens reais de pedreiros, armadores, azulejistas e operários em canteiros ativos.
             </p>
           </div>
 
@@ -264,7 +311,7 @@ export const ConstructionMediaSection: React.FC = () => {
           </div>
         </div>
 
-        {/* 6 Real Construction Photos Grid */}
+        {/* 6 Real Construction Photos Grid (100% distinct, zero duplicates) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredItems.map(item => (
             <div
@@ -278,7 +325,6 @@ export const ConstructionMediaSection: React.FC = () => {
                     src={item.image}
                     alt={item.title}
                     loading="lazy"
-                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -312,8 +358,8 @@ export const ConstructionMediaSection: React.FC = () => {
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
                   <span>Calculado pelo OBRA CALC</span>
                 </span>
-                <span className="text-stone-500 group-hover:text-amber-400 transition-colors">
-                  Pronto
+                <span className="text-stone-500 group-hover:text-amber-400 transition-colors font-mono font-bold">
+                  R$ 19,90
                 </span>
               </div>
             </div>
