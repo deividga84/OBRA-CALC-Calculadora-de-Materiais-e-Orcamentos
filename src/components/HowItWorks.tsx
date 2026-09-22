@@ -9,6 +9,7 @@ export const HowItWorks: React.FC = () => {
       icon: Ruler,
       title: 'Informe as medidas da obra',
       subtitle: 'Simples e direto',
+      image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=600&q=80',
       description:
         'Digite o comprimento, altura, largura ou área em m² da parede, piso, laje ou viga que você irá executar. Você não precisa saber fórmulas complexas.',
       details: ['Comprimento e altura de paredes', 'Área de pisos e lajes em m²', 'Vãos de portas e janelas com desconto automático']
@@ -18,6 +19,7 @@ export const HowItWorks: React.FC = () => {
       icon: Sliders,
       title: 'Configure os materiais e parâmetros',
       subtitle: 'Personalização total',
+      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
       description:
         'Escolha o tipo de bloco, tijolo, traço de concreto ou tipo de revestimento. Defina a margem de perda (ex: 10%) para proteger sua obra contra quebras.',
       details: ['Tipos de blocos ou cerâmicas', 'Traço de argamassa e concreto', 'Margem de perda ajustável']
@@ -27,6 +29,7 @@ export const HowItWorks: React.FC = () => {
       icon: CheckSquare,
       title: 'Confira as quantidades e estimativas',
       subtitle: 'Resultado pronto para usar',
+      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80',
       description:
         'O OBRA CALC gera instantaneamente a lista completa: sacos de cimento, metros de areia e brita, unidades de tijolos e custo estimado total.',
       details: ['Lista de compras para o depósito', 'Estimativa de custo total', 'Redução drástica de desperdício']
@@ -57,40 +60,54 @@ export const HowItWorks: React.FC = () => {
             return (
               <div
                 key={index}
-                className="relative rounded-2xl bg-gradient-to-b from-[#141820] to-[#0d1015] p-6 sm:p-7 border border-stone-800 hover:border-amber-500/50 hover:shadow-2xl hover:shadow-amber-500/5 transition-all duration-300 flex flex-col justify-between"
+                className="group relative rounded-2xl bg-gradient-to-b from-[#141820] to-[#0d1015] border border-stone-800 hover:border-amber-500/50 hover:shadow-2xl hover:shadow-amber-500/5 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
-                {/* Step badge and number */}
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400">
-                      <IconComponent className="w-6 h-6 stroke-[2]" />
+                  {/* Real Civil Construction Photo Header */}
+                  <div className="relative h-36 w-full overflow-hidden bg-stone-950">
+                    <img
+                      src={step.image}
+                      alt={step.title}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#141820] via-[#141820]/40 to-black/30" />
+
+                    <div className="absolute top-3 left-3 w-10 h-10 rounded-xl bg-stone-900/90 backdrop-blur-md border border-amber-400/30 flex items-center justify-center text-amber-400 shadow-md">
+                      <IconComponent className="w-5 h-5 stroke-[2]" />
                     </div>
-                    <span className="text-3xl sm:text-4xl font-black font-mono text-stone-700/80">
+
+                    <span className="absolute top-3 right-3 text-2xl font-black font-mono text-amber-400/90 bg-stone-950/80 backdrop-blur-md px-2.5 py-0.5 rounded-lg border border-amber-400/30">
                       {step.number}
                     </span>
                   </div>
 
-                  <span className="text-xs uppercase font-bold tracking-wider text-amber-400 block mb-1">
-                    {step.subtitle}
-                  </span>
+                  <div className="p-6 pt-3">
+                    <span className="text-xs uppercase font-bold tracking-wider text-amber-400 block mb-1">
+                      {step.subtitle}
+                    </span>
 
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-3 leading-snug">
-                    {step.title}
-                  </h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2 leading-snug">
+                      {step.title}
+                    </h3>
 
-                  <p className="text-xs sm:text-sm text-stone-400 leading-relaxed mb-6">
-                    {step.description}
-                  </p>
+                    <p className="text-xs sm:text-sm text-stone-400 leading-relaxed mb-4">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Sub-items check */}
-                <div className="pt-4 border-t border-stone-800/80 space-y-2">
-                  {step.details.map((detail, dIdx) => (
-                    <div key={dIdx} className="flex items-center gap-2 text-xs text-stone-300">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
-                      <span>{detail}</span>
-                    </div>
-                  ))}
+                <div className="p-6 pt-0">
+                  <div className="pt-4 border-t border-stone-800/80 space-y-2">
+                    {step.details.map((detail, dIdx) => (
+                      <div key={dIdx} className="flex items-center gap-2 text-xs text-stone-300">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
+                        <span>{detail}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             );

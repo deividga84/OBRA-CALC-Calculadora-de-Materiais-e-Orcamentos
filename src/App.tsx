@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { Benefits } from './components/Benefits';
 import { HowItWorks } from './components/HowItWorks';
 import { ProductPresentation } from './components/ProductPresentation';
+import { ConstructionMediaSection } from './components/ConstructionMediaSection';
 import { ConfidenceSection } from './components/ConfidenceSection';
 import { CheckoutSection } from './components/CheckoutSection';
 import { FinalCTA } from './components/FinalCTA';
@@ -39,6 +40,7 @@ export default function App() {
         <Benefits />
         <HowItWorks />
         <ProductPresentation />
+        <ConstructionMediaSection />
         <ConfidenceSection />
         <CheckoutSection />
         <FinalCTA />
