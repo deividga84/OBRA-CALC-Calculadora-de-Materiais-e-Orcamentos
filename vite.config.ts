@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/OBRA-CALC-Calculadora-de-Materiais-e-Orcamentos/',
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
