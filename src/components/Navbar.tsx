@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
             className="hover:text-amber-400 transition-colors py-1 flex items-center gap-1.5"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-            <span>Obras Reais & Vídeo</span>
+            <span>Obras Reais</span>
           </a>
           <a
             href="#confianca"
@@ -125,8 +125,8 @@ export const Navbar: React.FC = () => {
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2 rounded-lg hover:bg-stone-800 hover:text-amber-400 flex items-center justify-between text-amber-300 font-semibold"
             >
-              <span>Obras Reais & Vídeo</span>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-amber-400/20 text-amber-400 border border-amber-400/30">HD</span>
+              <span>Obras Reais</span>
+              <span className="text-[10px] px-2 py-0.5 rounded bg-amber-400/20 text-amber-400 border border-amber-400/30">FOTOS</span>
             </a>
             <a
               href="#confianca"

@@ -1,43 +1,19 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import {
-  Play,
-  Pause,
-  Maximize2,
   HardHat,
   Building2,
   Layers,
   Sparkles,
   ArrowRight,
   CheckCircle2,
-  ShieldAlert,
-  Clock
+  Clock,
+  Eye
 } from 'lucide-react';
 import { CAKTO_CHECKOUT_URL } from '../config';
 
 export const ConstructionMediaSection: React.FC = () => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<'todas' | 'estrutura' | 'alvenaria' | 'acabamento'>('todas');
-
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        videoRef.current.play();
-        setIsPlaying(true);
-      }
-    }
-  };
-
-  const handleFullscreen = () => {
-    if (videoRef.current) {
-      if (videoRef.current.requestFullscreen) {
-        videoRef.current.requestFullscreen();
-      }
-    }
-  };
+  const [featuredIndex, setFeaturedIndex] = useState<number>(0);
 
   // Strategic high-resolution civil construction photo gallery
   const galleryItems = [
@@ -101,10 +77,28 @@ export const ConstructionMediaSection: React.FC = () => {
     ? galleryItems
     : galleryItems.filter(item => item.category === activeTab);
 
-  // Video source: local offline fallback + remote mirror
-  const localVideoUrl = './assets/construction-timelapse.mp4';
-  const remoteVideoUrl = 'https://archive.org/download/Timelapse_of_New_Show_Low_Public_Library_and_City_4_TV_studio_Construction_site./Timelapse_of_New_Show_Low_Public_Library_and_City_4_TV_studio_Construction_site..mp4';
-  const videoPoster = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80';
+  const featuredShots = [
+    {
+      title: 'Canteiro Ativo: Concretagem de Vigas e Lajes',
+      subtitle: 'Execução de estrutura com dosagem rigorosa de cimento e agregados',
+      image: 'https://images.unsplash.com/photo-1541888946425-d0fbb180c5f7?auto=format&fit=crop&w=1200&q=80',
+      badge: 'ESTRUTURAL • CONCRETO ARMADO'
+    },
+    {
+      title: 'Alvenaria com Prumo e Argamassa no Traço Exato',
+      subtitle: 'Elevação contínua sem desperdício de sacos de cimento e areia',
+      image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80',
+      badge: 'ALVENARIA • BLOCOS & ARGAMASSA'
+    },
+    {
+      title: 'Assentamento de Pisos e Acabamento com Recorte Preciso',
+      subtitle: 'Controle de metragem quadrada e caixas com margem de quebra',
+      image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=1200&q=80',
+      badge: 'ACABAMENTO • PORCELANATOS'
+    }
+  ];
+
+  const currentFeatured = featuredShots[featuredIndex];
 
   return (
     <section id="obras-reais" className="py-16 sm:py-24 bg-[#090b0e] border-b border-stone-800/80 relative overflow-hidden w-full max-w-full">
@@ -120,72 +114,69 @@ export const ConstructionMediaSection: React.FC = () => {
             <span>Na Prática no Canteiro de Obras</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-            Imagens e Vídeo Real: <span className="text-amber-400">Da Fundação ao Acabamento</span>
+            Imagens Reais: <span className="text-amber-400">Da Fundação ao Acabamento</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-stone-300">
             Veja como o <strong>OBRA CALC</strong> se aplica na rotina prática da construção civil, trazendo precisão exata para cada etapa do seu canteiro.
           </p>
         </div>
 
-        {/* Featured Video Player Card */}
+        {/* Featured Visual Spotlight Card */}
         <div className="mb-16 rounded-2xl bg-stone-900/90 border border-stone-800 p-4 sm:p-6 lg:p-8 shadow-2xl shadow-black/80">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
             
-            {/* Video Container (7 cols) */}
+            {/* Spotlight Image (7 cols) */}
             <div className="lg:col-span-7 relative rounded-xl overflow-hidden bg-black border border-stone-800 group shadow-inner">
-              <video
-                ref={videoRef}
-                autoPlay
-                loop
-                muted
-                playsInline
-                poster={videoPoster}
-                className="w-full h-auto aspect-video object-cover"
-              >
-                <source src={localVideoUrl} type="video/mp4" />
-                <source src={remoteVideoUrl} type="video/mp4" />
-                Seu navegador não suporta a tag de vídeo.
-              </video>
+              <div className="relative aspect-video w-full overflow-hidden bg-stone-950">
+                <img
+                  src={currentFeatured.image}
+                  alt={currentFeatured.title}
+                  loading="eager"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover transition-all duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 
-              {/* Status Banner on Top Left */}
-              <div className="absolute top-3 left-3 z-10 flex items-center gap-2 px-3 py-1 rounded-full bg-stone-950/80 backdrop-blur-md border border-amber-500/30 text-[11px] font-semibold text-amber-300 shadow-md">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                <span>CANTEIRO EM ANDAMENTO • SEM ÁUDIO</span>
-              </div>
-
-              {/* Video Controls Overlay */}
-              <div className="absolute bottom-3 inset-x-3 z-10 flex items-center justify-between p-2 rounded-lg bg-stone-950/85 backdrop-blur-md border border-stone-800/80">
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={togglePlay}
-                    aria-label={isPlaying ? 'Pausar vídeo' : 'Reproduzir vídeo'}
-                    className="w-8 h-8 rounded-lg bg-amber-400 hover:bg-amber-300 text-stone-950 flex items-center justify-center transition-colors font-bold shadow"
-                  >
-                    {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
-                  </button>
-                  <span className="text-xs text-stone-300 font-medium pl-1">
-                    {isPlaying ? 'Reproduzindo canteiro' : 'Pausado'}
-                  </span>
+                {/* Status Banner on Top Left */}
+                <div className="absolute top-3 left-3 z-10 flex items-center gap-2 px-3 py-1 rounded-full bg-stone-950/85 backdrop-blur-md border border-amber-500/30 text-[11px] font-semibold text-amber-300 shadow-md">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>{currentFeatured.badge}</span>
                 </div>
 
-                <div className="flex items-center gap-3 text-xs text-stone-400">
-                  <span className="hidden sm:inline-block font-mono text-[11px] text-amber-400/90 bg-stone-900 px-2 py-0.5 rounded border border-stone-800">
-                    HD • 1080p
-                  </span>
-                  <button
-                    type="button"
-                    onClick={handleFullscreen}
-                    title="Tela cheia"
-                    className="p-1.5 rounded text-stone-400 hover:text-white hover:bg-stone-800 transition-colors"
-                  >
-                    <Maximize2 className="w-4 h-4" />
-                  </button>
+                {/* Bottom Caption Overlay */}
+                <div className="absolute bottom-3 inset-x-3 z-10 p-3 rounded-lg bg-stone-950/85 backdrop-blur-md border border-stone-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-white leading-tight">
+                      {currentFeatured.title}
+                    </h4>
+                    <p className="text-[11px] text-stone-400 hidden sm:block mt-0.5">
+                      {currentFeatured.subtitle}
+                    </p>
+                  </div>
+
+                  {/* Quick Selectors */}
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {featuredShots.map((_, sIdx) => (
+                      <button
+                        key={sIdx}
+                        type="button"
+                        onClick={() => setFeaturedIndex(sIdx)}
+                        aria-label={`Ver foto ${sIdx + 1}`}
+                        className={`px-2.5 py-1 rounded text-[10px] font-bold transition-all ${
+                          featuredIndex === sIdx
+                            ? 'bg-amber-400 text-stone-950'
+                            : 'bg-stone-800/90 text-stone-400 hover:bg-stone-700 hover:text-white'
+                        }`}
+                      >
+                        Etapa {sIdx + 1}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Explanatory Context for Video (5 cols) */}
+            {/* Explanatory Context for Spotlight (5 cols) */}
             <div className="lg:col-span-5 flex flex-col justify-between">
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-stone-800/80 border border-stone-700/60 text-stone-300 text-xs font-semibold mb-4">
@@ -220,16 +211,16 @@ export const ConstructionMediaSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Fast Action */}
+              {/* Call to action anchor */}
               <div className="pt-2">
                 <a
                   href={CAKTO_CHECKOUT_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 hover:from-amber-300 hover:to-amber-400 text-stone-950 font-bold text-sm tracking-wide shadow-xl shadow-amber-500/20 active:scale-95 transition-all text-center"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold text-xs tracking-wide shadow-md transition-colors"
                 >
-                  <span>Acessar o OBRA CALC por R$ 19,90</span>
-                  <ArrowRight className="w-4 h-4 shrink-0" />
+                  <span>CALCULAR MINHA OBRA SEM ERROS — R$ 19,90</span>
+                  <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -237,113 +228,122 @@ export const ConstructionMediaSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Gallery Section Header & Filters */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        {/* Gallery Filter Tabs */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
           <div>
-            <h3 className="text-xl sm:text-2xl font-black text-white">
-              Variações e Aplicações Reais em Obra
+            <h3 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+              <Layers className="w-5 h-5 text-amber-400" />
+              <span>Etapas da Obra com o OBRA CALC</span>
             </h3>
-            <p className="text-xs sm:text-sm text-stone-400">
-              Imagens reais das principais etapas abrangidas pela ferramenta
+            <p className="text-xs text-stone-400 mt-1">
+              Imagens reais das principais frentes de trabalho calculadas pelo aplicativo.
             </p>
           </div>
 
           {/* Filter Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
-            <button
-              type="button"
-              onClick={() => setActiveTab('todas')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors border ${
-                activeTab === 'todas'
-                  ? 'bg-amber-400 text-stone-950 border-amber-400 font-bold'
-                  : 'bg-stone-900 text-stone-400 border-stone-800 hover:text-white'
-              }`}
-            >
-              Todas as Etapas
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('estrutura')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors border ${
-                activeTab === 'estrutura'
-                  ? 'bg-amber-400 text-stone-950 border-amber-400 font-bold'
-                  : 'bg-stone-900 text-stone-400 border-stone-800 hover:text-white'
-              }`}
-            >
-              Estruturas & Concreto
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('alvenaria')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors border ${
-                activeTab === 'alvenaria'
-                  ? 'bg-amber-400 text-stone-950 border-amber-400 font-bold'
-                  : 'bg-stone-900 text-stone-400 border-stone-800 hover:text-white'
-              }`}
-            >
-              Alvenaria
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('acabamento')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors border ${
-                activeTab === 'acabamento'
-                  ? 'bg-amber-400 text-stone-950 border-amber-400 font-bold'
-                  : 'bg-stone-900 text-stone-400 border-stone-800 hover:text-white'
-              }`}
-            >
-              Acabamentos
-            </button>
+          <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-stone-900 border border-stone-800">
+            {[
+              { id: 'todas', label: 'Todas as Frentes' },
+              { id: 'estrutura', label: 'Estruturas' },
+              { id: 'alvenaria', label: 'Alvenaria' },
+              { id: 'acabamento', label: 'Acabamentos' }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveTab(tab.id as any)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 ${
+                  activeTab === tab.id
+                    ? 'bg-amber-400 text-stone-950 shadow-sm'
+                    : 'text-stone-400 hover:text-white hover:bg-stone-800'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item) => (
+        {/* 6 Real Construction Photos Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {filteredItems.map(item => (
             <div
               key={item.id}
-              className="group rounded-2xl bg-gradient-to-b from-[#141822] to-[#0e1118] border border-stone-800 hover:border-amber-400/40 overflow-hidden transition-all duration-300 flex flex-col shadow-lg shadow-black/40"
+              className="group rounded-2xl bg-gradient-to-b from-[#131720] to-[#0d1015] border border-stone-800 hover:border-amber-500/50 p-4 transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/5 flex flex-col justify-between overflow-hidden"
             >
-              {/* Photo Container */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-stone-950">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0e1118] via-transparent to-black/30" />
-                
-                <span className="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-stone-950/80 backdrop-blur-md px-2.5 py-1 rounded-md border border-amber-500/30">
-                  {item.tag}
-                </span>
+              <div>
+                {/* Photo container with zoom on hover */}
+                <div className="relative h-48 w-full rounded-xl overflow-hidden mb-4 bg-stone-950">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  
+                  {/* Category Tag */}
+                  <span className="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider text-stone-950 bg-amber-400 px-2.5 py-0.5 rounded-md shadow">
+                    {item.tag}
+                  </span>
+
+                  {/* Bottom Image title */}
+                  <div className="absolute bottom-2.5 left-3 right-3">
+                    <span className="text-[11px] font-medium text-amber-300/90 block">
+                      {item.subtitle}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Card Title and Description */}
+                <h4 className="text-base font-bold text-white group-hover:text-amber-300 transition-colors mb-2">
+                  {item.title}
+                </h4>
+
+                <p className="text-xs text-stone-400 leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
 
-              {/* Text Information */}
-              <div className="p-5 flex-1 flex flex-col justify-between">
-                <div>
-                  <h4 className="text-base font-bold text-white mb-1 group-hover:text-amber-300 transition-colors">
-                    {item.title}
-                  </h4>
-                  <span className="text-xs text-amber-400/80 font-medium block mb-2">
-                    {item.subtitle}
-                  </span>
-                  <p className="text-xs text-stone-400 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-stone-800/80 flex items-center justify-between text-[11px] text-stone-400">
-                  <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>Incluso no OBRA CALC</span>
-                  </span>
-                  <span className="text-amber-400 font-mono font-bold">R$ 19,90</span>
-                </div>
+              {/* Bottom Feature Pill */}
+              <div className="mt-4 pt-3 border-t border-stone-800/80 flex items-center justify-between text-[11px] text-amber-400 font-medium">
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Calculado pelo OBRA CALC</span>
+                </span>
+                <span className="text-stone-500 group-hover:text-amber-400 transition-colors">
+                  Pronto
+                </span>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Bottom Banner with reassurance */}
+        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-stone-900 via-stone-900/90 to-amber-950/20 border border-stone-800 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+          <div>
+            <div className="flex items-center justify-center md:justify-start gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">
+              <Sparkles className="w-4 h-4" />
+              <span>Sem necessidade de computador</span>
+            </div>
+            <h4 className="text-base sm:text-lg font-bold text-white">
+              Use direto no canteiro pelo seu smartphone
+            </h4>
+            <p className="text-xs text-stone-400 mt-1 max-w-xl">
+              Aplicativo leve, rápido e desenvolvido para abrir instantaneamente mesmo em conexões 3G/4G no meio do canteiro.
+            </p>
+          </div>
+
+          <a
+            href={CAKTO_CHECKOUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold text-xs sm:text-sm shadow-md transition-colors"
+          >
+            <span>Quero o OBRA CALC por R$ 19,90</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
 
       </div>
