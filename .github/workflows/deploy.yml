@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -36,13 +36,18 @@ jobs:
 
       - name: Build site with Vite
         run: npm run build
-        env:
-          BASE_PATH: ${{ steps.pages.outputs.base_path || '/OBRA-CALC-Calculadora-de-Materiais-e-Orcamentos/' }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
 
   deploy:
     environment:

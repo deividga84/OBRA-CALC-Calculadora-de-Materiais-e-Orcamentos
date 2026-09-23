@@ -4,9 +4,9 @@ import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
-  const isGitHubActions = process.env.GITHUB_ACTIONS === 'true';
-  const defaultRepoBase = '/OBRA-CALC-Calculadora-de-Materiais-e-Orcamentos/';
-  const base = process.env.BASE_PATH || (isGitHubActions ? defaultRepoBase : '/');
+  // Use relative base './' so all scripts, css and assets resolve correctly
+  // in ANY environment: GitHub Pages subpaths, custom domains, local preview, etc.
+  const base = process.env.BASE_PATH || './';
 
   return {
     base,
