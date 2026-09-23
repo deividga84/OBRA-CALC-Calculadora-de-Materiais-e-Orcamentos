@@ -4,8 +4,12 @@ import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
+  const isGitHubActions = process.env.GITHUB_ACTIONS === 'true';
+  const defaultRepoBase = '/OBRA-CALC-Calculadora-de-Materiais-e-Orcamentos/';
+  const base = process.env.BASE_PATH || (isGitHubActions ? defaultRepoBase : '/');
+
   return {
-    base: process.env.BASE_PATH || '/',
+    base,
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

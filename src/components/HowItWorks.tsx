@@ -1,6 +1,7 @@
 import React from 'react';
 import { Ruler, Sliders, CheckSquare, ArrowRight } from 'lucide-react';
-import { CAKTO_CHECKOUT_URL } from '../config';
+import { CAKTO_CHECKOUT_URL, getAssetUrl } from '../config';
+import { SafeImage } from './SafeImage';
 
 export const HowItWorks: React.FC = () => {
   const steps = [
@@ -9,7 +10,7 @@ export const HowItWorks: React.FC = () => {
       icon: Ruler,
       title: 'Informe as medidas da obra',
       subtitle: 'Simples e direto no canteiro',
-      image: '/images/obra/mestre_canteiro.jpg',
+      image: getAssetUrl('/images/obra/mestre_canteiro.jpg'),
       description:
         'Digite o comprimento, altura, largura ou área em m² da parede, piso, laje ou viga que você irá executar. Você não precisa saber fórmulas complexas.',
       details: ['Comprimento e altura de paredes', 'Área de pisos e lajes em m²', 'Vãos de portas e janelas com desconto automático']
@@ -19,7 +20,7 @@ export const HowItWorks: React.FC = () => {
       icon: Sliders,
       title: 'Configure os materiais e parâmetros',
       subtitle: 'Personalização do traço e insumos',
-      image: '/images/obra/betoneira_areia.jpg',
+      image: getAssetUrl('/images/obra/betoneira_areia.jpg'),
       description:
         'Escolha o tipo de bloco, tijolo, traço de concreto ou tipo de revestimento. Defina a margem de perda (ex: 10%) para proteger sua obra contra quebras.',
       details: ['Tipos de blocos ou cerâmicas', 'Traço de argamassa e concreto', 'Margem de perda ajustável']
@@ -29,7 +30,7 @@ export const HowItWorks: React.FC = () => {
       icon: CheckSquare,
       title: 'Confira as quantidades e estimativas',
       subtitle: 'Obra pronta sem falta de material',
-      image: '/images/obra/casa_estrutura.jpg',
+      image: getAssetUrl('/images/obra/casa_estrutura.jpg'),
       description:
         'O OBRA CALC gera instantaneamente a lista completa: sacos de cimento, metros de areia e brita, unidades de tijolos e custo estimado total.',
       details: ['Lista de compras para o depósito', 'Estimativa de custo total', 'Redução drástica de desperdício']
@@ -65,11 +66,10 @@ export const HowItWorks: React.FC = () => {
                 <div>
                   {/* Real Civil Construction Photo Header */}
                   <div className="relative h-36 w-full overflow-hidden bg-stone-950">
-                    <img
+                    <SafeImage
                       src={step.image}
                       alt={step.title}
                       loading="lazy"
-                      referrerPolicy="no-referrer"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#141820] via-[#141820]/40 to-black/30" />

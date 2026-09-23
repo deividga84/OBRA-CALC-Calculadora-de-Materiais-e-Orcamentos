@@ -11,7 +11,8 @@ import {
   ArrowRight,
   TrendingDown
 } from 'lucide-react';
-import { CAKTO_CHECKOUT_URL } from '../config';
+import { CAKTO_CHECKOUT_URL, getAssetUrl } from '../config';
+import { SafeImage } from './SafeImage';
 
 export const ProductPresentation: React.FC = () => {
   const modules = [
@@ -20,7 +21,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 01',
       title: 'Alvenaria e Paredes',
       subtitle: 'Blocos, Tijolos e Argamassa',
-      image: '/images/obra/pedreiro_tijolo.jpg',
+      image: getAssetUrl('/images/obra/pedreiro_tijolo.jpg'),
       description:
         'Calcule a quantidade exata de blocos de concreto ou tijolos cerâmicos necessários para qualquer parede, descontando portas e janelas automaticamente.',
       features: [
@@ -34,7 +35,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 02',
       title: 'Concreto e Estrutural',
       subtitle: 'Sapatas, Vigas, Pilares e Lajes',
-      image: '/images/obra/fundacao_concreto.jpg',
+      image: getAssetUrl('/images/obra/fundacao_concreto.jpg'),
       description:
         'Obtenha os volumes exatos de concreto e a dosagem de cimento, areia média e brita 1 de acordo com o traço padrão da construção civil.',
       features: [
@@ -48,7 +49,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 03',
       title: 'Pisos e Revestimentos',
       subtitle: 'Cerâmicas, Porcelanatos e Rejunte',
-      image: '/images/obra/azulejista_piso.jpg',
+      image: getAssetUrl('/images/obra/azulejista_piso.jpg'),
       description:
         'Planeje a compra de pisos e azulejos com precisão milimétrica, considerando a margem para recortes diagonais ou alinhados.',
       features: [
@@ -62,7 +63,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 04',
       title: 'Pintura e Acabamento',
       subtitle: 'Tintas, Seladores e Massa Corrida',
-      image: '/images/obra/pintor_acabamento.jpg',
+      image: getAssetUrl('/images/obra/pintor_acabamento.jpg'),
       description:
         'Saiba exatamente quantas latas (18L) e galões (3,6L) de tinta comprar, baseando-se na área líquida e no número de demãos recomendado.',
       features: [
@@ -76,7 +77,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 05',
       title: 'Controle de Margem de Perda',
       subtitle: 'Segurança contra desperdício no canteiro',
-      image: '/images/obra/betoneira_areia.jpg',
+      image: getAssetUrl('/images/obra/betoneira_areia.jpg'),
       description:
         'Ajuste facilmente de 5% a 15% de margem técnica para compensar quebras no descarregamento, sobras e cortes inevitáveis no canteiro.',
       features: [
@@ -90,7 +91,7 @@ export const ProductPresentation: React.FC = () => {
       tag: 'Módulo 06',
       title: 'Resumo para Orçamentos e Compras',
       subtitle: 'Organização profissional com mestre de obras',
-      image: '/images/obra/mestre_canteiro.jpg',
+      image: getAssetUrl('/images/obra/mestre_canteiro.jpg'),
       description:
         'Todas as quantidades reunidas em uma visualização limpa e profissional, pronta para você levar ao depósito de materiais ou repassar ao cliente.',
       features: [
@@ -130,11 +131,10 @@ export const ProductPresentation: React.FC = () => {
                 <div>
                   {/* Real Civil Construction Photo Header */}
                   <div className="relative h-44 w-full overflow-hidden bg-stone-950">
-                    <img
+                    <SafeImage
                       src={mod.image}
                       alt={mod.title}
                       loading="lazy"
-                      referrerPolicy="no-referrer"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#141822] via-[#141822]/40 to-black/30" />

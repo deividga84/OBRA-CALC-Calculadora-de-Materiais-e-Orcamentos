@@ -11,7 +11,8 @@ import {
   Building2,
   Hammer
 } from 'lucide-react';
-import { CAKTO_CHECKOUT_URL } from '../config';
+import { CAKTO_CHECKOUT_URL, getAssetUrl } from '../config';
+import { SafeImage } from './SafeImage';
 
 export const Hero: React.FC = () => {
   // Interactive preview state to let prospective buyers feel the power of the tool
@@ -48,7 +49,7 @@ export const Hero: React.FC = () => {
       {/* Subtle civil construction blueprint backdrop */}
       <div 
         className="absolute inset-0 bg-cover bg-center pointer-events-none -z-20 opacity-[0.04] mix-blend-luminosity"
-        style={{ backgroundImage: `url('/images/obra/casa_estrutura.jpg')` }}
+        style={{ backgroundImage: `url('${getAssetUrl('/images/obra/casa_estrutura.jpg')}')` }}
         aria-hidden="true"
       />
 
@@ -85,19 +86,19 @@ export const Hero: React.FC = () => {
             {/* Real Construction Social Proof Strip */}
             <div className="flex items-center gap-3 mb-6 p-2 pr-4 rounded-xl bg-stone-900/90 border border-stone-800 shadow-md">
               <div className="flex -space-x-2 overflow-hidden shrink-0">
-                <img
+                <SafeImage
                   className="inline-block h-8 w-8 rounded-full ring-2 ring-stone-900 object-cover"
-                  src="/images/obra/mestre_canteiro.jpg"
+                  src={getAssetUrl('/images/obra/mestre_canteiro.jpg')}
                   alt="Mestre de obras com prancheta no canteiro"
                 />
-                <img
+                <SafeImage
                   className="inline-block h-8 w-8 rounded-full ring-2 ring-stone-900 object-cover"
-                  src="/images/obra/pedreiro_tijolo.jpg"
+                  src={getAssetUrl('/images/obra/pedreiro_tijolo.jpg')}
                   alt="Pedreiro assentando tijolos"
                 />
-                <img
+                <SafeImage
                   className="inline-block h-8 w-8 rounded-full ring-2 ring-stone-900 object-cover"
-                  src="/images/obra/fundacao_concreto.jpg"
+                  src={getAssetUrl('/images/obra/fundacao_concreto.jpg')}
                   alt="Operários em concretagem e ferragens"
                 />
               </div>
@@ -209,11 +210,11 @@ export const Hero: React.FC = () => {
 
               {/* Construction Reference Mini-Card with Real Photo */}
               <div className="relative h-16 w-full rounded-xl overflow-hidden mb-4 border border-stone-800 bg-stone-950 flex items-center">
-                <img
+                <SafeImage
                   src={
                     materialType === 'tijolo_ceramico'
-                      ? '/images/obra/pedreiro_tijolo.jpg'
-                      : '/images/obra/parede_alinhada.jpg'
+                      ? getAssetUrl('/images/obra/pedreiro_tijolo.jpg')
+                      : getAssetUrl('/images/obra/parede_alinhada.jpg')
                   }
                   alt="Alvenaria e tijolos no canteiro"
                   className="absolute inset-0 w-full h-full object-cover opacity-35"

@@ -10,3 +10,27 @@ export const PRODUCT_INFO = {
   disclaimer:
     "As informações fornecidas pelo OBRA CALC são estimativas e não substituem projetos, cálculos ou orientações de profissionais habilitados.",
 };
+
+export const getAssetUrl = (path: string): string => {
+  if (!path) return '';
+  if (
+    path.startsWith('http://') ||
+    path.startsWith('https://') ||
+    path.startsWith('data:') ||
+    path.startsWith('blob:')
+  ) {
+    return path;
+  }
+  let base = '/';
+  try {
+    const metaEnv = typeof import.meta !== 'undefined' ? (import.meta as any)?.env : undefined;
+    if (metaEnv && typeof metaEnv.BASE_URL === 'string') {
+      base = metaEnv.BASE_URL;
+    }
+  } catch {
+    base = '/';
+  }
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  const cleanBase = base.endsWith('/') ? base : `${base}/`;
+  return `${cleanBase}${cleanPath}`;
+};

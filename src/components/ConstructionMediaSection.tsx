@@ -11,7 +11,8 @@ import {
   Hammer,
   ShieldCheck
 } from 'lucide-react';
-import { CAKTO_CHECKOUT_URL } from '../config';
+import { CAKTO_CHECKOUT_URL, getAssetUrl } from '../config';
+import { SafeImage } from './SafeImage';
 
 export const ConstructionMediaSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'todas' | 'estrutura' | 'alvenaria' | 'acabamento'>('todas');
@@ -24,7 +25,7 @@ export const ConstructionMediaSection: React.FC = () => {
       stepLabel: '1. Medição & Canteiro',
       title: 'Mestre de Obras e Engenheiro com Prancheta no Canteiro',
       subtitle: 'Conferência de medidas reais na obra de tijolos e colunas antes da compra',
-      image: '/images/obra/mestre_canteiro.jpg',
+      image: getAssetUrl('/images/obra/mestre_canteiro.jpg'),
       badge: 'ETAPA 1 • LEVANTAMENTO NO CANTEIRO',
       painAvoided: 'Começar a comprar material no "chute" ou de cabeça, errando a conta e tomando prejuízo no bolso logo na primeira semana.',
       solutionText: 'O mestre de obras insere as dimensões reais (comprimento x altura) no celular direto no canteiro. O OBRA CALC desconta automaticamente vãos de portas e janelas e entrega a área líquida exata calculada.',
@@ -35,7 +36,7 @@ export const ConstructionMediaSection: React.FC = () => {
       stepLabel: '2. Fundações & Estrutura',
       title: 'Concretagem e Ferragem Armada em Fundação',
       subtitle: 'Operários concretando vigas baldrames e sapatas com armaduras de aço CA-50',
-      image: '/images/obra/fundacao_concreto.jpg',
+      image: getAssetUrl('/images/obra/fundacao_concreto.jpg'),
       badge: 'ETAPA 2 • ESTRUTURAS & CONCRETAGEM',
       painAvoided: 'Faltar agregados no meio da concretagem de uma viga ou sobrar concreto caro endurecendo no chão.',
       solutionText: 'Cálculo exato de volume (m³) com traço calibrado para concreto estrutural (20 a 30 MPa). O app detalha a quantidade exata de sacos de cimento, latas de areia média e latas de pedra brita.',
@@ -46,7 +47,7 @@ export const ConstructionMediaSection: React.FC = () => {
       stepLabel: '3. Alvenaria em Ação',
       title: 'Pedreiro Assentando Tijolo Cerâmico com Colher e Argamassa',
       subtitle: 'Elevação técnica de parede com linha de náilon e colher de aço',
-      image: '/images/obra/pedreiro_tijolo.jpg',
+      image: getAssetUrl('/images/obra/pedreiro_tijolo.jpg'),
       badge: 'ETAPA 3 • ALVENARIA & PEDREIRO NA PRÁTICA',
       painAvoided: 'Comprar caminhão fechado de tijolos que quebram à toa e ficar sem argamassa no meio do expediente.',
       solutionText: 'Indica a quantidade exata de blocos cerâmicos ou de concreto por m² com 5% de quebra calculada, mais o traço de assentamento com sacos de cimento, cal hidratada e areia.',
@@ -57,7 +58,7 @@ export const ConstructionMediaSection: React.FC = () => {
       stepLabel: '4. Pisos & Revestimento',
       title: 'Azulejista Assentando Porcelanato com Desempenadeira Dentada',
       subtitle: 'Espalhamento uniforme de argamassa colante AC e niveladores de piso',
-      image: '/images/obra/azulejista_piso.jpg',
+      image: getAssetUrl('/images/obra/azulejista_piso.jpg'),
       badge: 'ETAPA 4 • AZULEJISTA & REVESTIMENTOS',
       painAvoided: 'Faltar 2 ou 3 caixas de piso para terminar o cômodo e não encontrar mais o mesmo lote ou tonalidade no depósito.',
       solutionText: 'Calcula a metragem real do piso e indica o número fechado de caixas já com margem de segurança de 10% para quebras e rodapés, mais os sacos de argamassa AC-I/II/III e quilos de rejunte.',
@@ -68,7 +69,7 @@ export const ConstructionMediaSection: React.FC = () => {
       stepLabel: '5. Pintura & Acabamento',
       title: 'Pintor Profissional Aplicando Tinta com Rolo na Obra',
       subtitle: 'Aplicação com extensor e rolo em parede emassada e lixada',
-      image: '/images/obra/pintor_acabamento.jpg',
+      image: getAssetUrl('/images/obra/pintor_acabamento.jpg'),
       badge: 'ETAPA 5 • PINTURA PROFISSIONAL',
       painAvoided: 'Comprar latas grandes de 18L caras que sobram pela metade e secam guardadas sem uso.',
       solutionText: 'O app calcula o rendimento por demão e combina latas de 18L e galões de 3,6L da melhor forma para você pagar o menor valor possível no balcão da loja de tintas.',
@@ -84,7 +85,7 @@ export const ConstructionMediaSection: React.FC = () => {
       title: 'Amarração de Ferragens & Estribos de Aço CA-50',
       subtitle: 'Armador com torquês e arame recozido preparando vigas',
       desc: 'Montagem de estribos e vergalhões para garantir a resistência estrutural das colunas e vigas da casa sem trincas.',
-      image: '/images/obra/ferragem_armada.jpg',
+      image: getAssetUrl('/images/obra/ferragem_armada.jpg'),
       tag: 'Aço & Ferragens'
     },
     {
@@ -93,7 +94,7 @@ export const ConstructionMediaSection: React.FC = () => {
       title: 'Alvenaria com Linha e Nível de Pedreiro',
       subtitle: 'Paredes retas com controle de massa e espessura de junta',
       desc: 'Controle de prumo e espessura de argamassa no assentamento de tijolos cerâmicos, garantindo paredes aprumadas.',
-      image: '/images/obra/parede_alinhada.jpg',
+      image: getAssetUrl('/images/obra/parede_alinhada.jpg'),
       tag: 'Alvenaria na Prática'
     },
     {
@@ -102,7 +103,7 @@ export const ConstructionMediaSection: React.FC = () => {
       title: 'Pedreiro Sarrafeando Reboco com Régua de Alumínio',
       subtitle: 'Argamassa e emboço regularizado na parede de tijolo',
       desc: 'Aplicação e sarrafeamento de argamassa com régua metálica, eliminando ondulações antes do acabamento fino.',
-      image: '/images/obra/reboco_sarrafeado.jpg',
+      image: getAssetUrl('/images/obra/reboco_sarrafeado.jpg'),
       tag: 'Reboco & Emboço'
     },
     {
@@ -111,7 +112,7 @@ export const ConstructionMediaSection: React.FC = () => {
       title: 'Estrutura Completa de Casa com Laje Concretada',
       subtitle: 'Paredes de tijolo baiano, vigas e laje pré-moldada escorada',
       desc: 'Visão real de residência em construção com alvenaria estrutural, escoras de madeira e concreto de laje sob o sol.',
-      image: '/images/obra/casa_estrutura.jpg',
+      image: getAssetUrl('/images/obra/casa_estrutura.jpg'),
       tag: 'Casa em Construção'
     },
     {
@@ -120,7 +121,7 @@ export const ConstructionMediaSection: React.FC = () => {
       title: 'Canteiro Ativo: Betoneira, Areia, Brita e Cimento',
       subtitle: 'Preparo diário de traço de concreto e argamassa no canteiro',
       desc: 'Betoneira girando no canteiro com montes de areia média, brita 1 e sacos de cimento empilhados prontos para uso.',
-      image: '/images/obra/betoneira_areia.jpg',
+      image: getAssetUrl('/images/obra/betoneira_areia.jpg'),
       tag: 'Canteiro de Obras'
     },
     {
@@ -129,7 +130,7 @@ export const ConstructionMediaSection: React.FC = () => {
       title: 'Conferência de Prumo de Face e Nível de Bolha',
       subtitle: 'Pedreiro conferindo alinhamento e esquadro com fio de prumo',
       desc: 'Checagem rigorosa de alinhamento vertical com fio de prumo metálico e nível para garantir portas e janelas sem dente.',
-      image: '/images/obra/prumo_esquadro.jpg',
+      image: getAssetUrl('/images/obra/prumo_esquadro.jpg'),
       tag: 'Nível & Esquadro'
     }
   ];
@@ -194,7 +195,7 @@ export const ConstructionMediaSection: React.FC = () => {
             {/* Spotlight Image (7 cols) */}
             <div className="lg:col-span-7 relative rounded-xl overflow-hidden bg-black border border-stone-800 group shadow-inner">
               <div className="relative aspect-video w-full overflow-hidden bg-stone-950">
-                <img
+                <SafeImage
                   src={currentFeatured.image}
                   alt={currentFeatured.title}
                   loading="eager"
@@ -321,7 +322,7 @@ export const ConstructionMediaSection: React.FC = () => {
               <div>
                 {/* Photo container with zoom on hover */}
                 <div className="relative h-48 w-full rounded-xl overflow-hidden mb-4 bg-stone-950">
-                  <img
+                  <SafeImage
                     src={item.image}
                     alt={item.title}
                     loading="lazy"
